@@ -7,4 +7,6 @@ pip install -e .
 python -m playwright install chromium
 ```
 
-Use `PracticeBrowser` as a context manager, then call `observe`, `type_message` and `click_submit`. Agentic can expose these actions to a model for a small closed exercise. Desktop control, real websites and approval handling require a separate design.
+Use `PracticeBrowser` as a context manager, then call `observe`, `type_message` and `click_submit`. Agentic can expose these actions to a model for a small closed exercise.
+
+For an opt-in desktop experiment, install `pip install -e '.[desktop]'`. `agi_telekinesis.desktop.Desktop` exposes primary-screen size, coordinate clicks, and printable ASCII typing. Each action requires an approval callback. PyAutoGUI requires a supported graphical desktop (Linux commonly needs X11); moving the pointer to a screen corner triggers its fail-safe. The caller supplies coordinates: this version does not interpret screenshots or support real browser navigation.
