@@ -21,9 +21,11 @@ class PracticeBrowser:
             self.page.route("**/*", lambda route: route.abort())
             self.page.set_content(PAGE)
         except BaseException:
-            if hasattr(self, "browser"):
-                self.browser.close()
-            self.playwright.stop()
+            try:
+                if hasattr(self, "browser"):
+                    self.browser.close()
+            finally:
+                self.playwright.stop()
             raise
         return self
 
